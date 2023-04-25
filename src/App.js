@@ -1,8 +1,9 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from 'react';
 import './App.css';
 import Home from "./screens/Home/Home";
 import Podcast from "./screens/Podcast/Podcast";
 import Episode from "./screens/Episode/Episode";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
