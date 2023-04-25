@@ -25,5 +25,10 @@ export const podcasterSlice = createSlice({
   },
 });
 
-export const { updatePodcaster } = podcasterSlice.actions;
+const { updatePodcaster } = podcasterSlice.actions;
+
+export {
+  updatePodcaster,
+  status,
+} 
 export default podcasterSlice.reducer;

@@ -1,9 +1,10 @@
 import "./Home.css"
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import moment from "moment/moment";
 import { requestPodcastList } from "../../services/data";
-import {updatePodcaster} from "../../redux/podcasterSlice";
+import {updatePodcaster, status} from "../../redux/podcasterSlice";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const dispatch = useDispatch(),
@@ -18,7 +19,7 @@ const Home = () => {
       }));
     }
 
-    if (podcaster.status === "ZERO") {
+    if (podcaster.status === status.ZERO || podcaster.status === status.OUTDATED) {
       fetchData();
     }
   }, [podcaster.status]);
@@ -28,6 +29,7 @@ const Home = () => {
     <p className="home-title">Home:</p>
     <p>Estado de la store: {podcaster.status}</p>
     <p>Numero de podcasts: {podcaster.podcastList.length}</p>
+    <Link to="/podcast/2">Pulsa aqui para ir al podcast</Link>
   </>);
 }
 

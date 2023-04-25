@@ -1,19 +1,24 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import React from 'react';
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import './App.css';
 import Home from "./screens/Home/Home";
 import Podcast from "./screens/Podcast/Podcast";
 import Episode from "./screens/Episode/Episode";
+import Root from "./screens/Root/Root";
 
 const App = () => {
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Root/>}>
+          <Route index element={<Home/>}/>
+          <Route exact path="/podcast/:podcastId" element={<Podcast/>}/>
+          <Route exact path="/podcast/:podcastId/episode/:episodeId" element={<Episode/>}/>
+      </Route>
+    )
+  );
+
   return (
-    <Router>
-      <Routes>
-        <Route exact path="/" element={<Home/>}/>
-        <Route exact path="/podcast/:podcastId" element={<Podcast/>}/>
-        <Route exact path="/podcast/:podcastId/episode/:episodeId" element={<Episode/>}/>
-      </Routes>
-    </Router>
+    <RouterProvider router={router}/>
   );
 }
 
