@@ -3,4 +3,4 @@
 - react-router
 - moment
 - redux
-- redux-thunk
+- redux-toolkit
