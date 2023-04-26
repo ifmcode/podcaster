@@ -1,5 +1,80 @@
-.podcast-title {
-  color: blue;
-  font-size: 14px;
-  text-align: center;
+.podcast-main-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.podcast-episodes-wrapper {
+  position: relative;
+  width: calc(70% - 80px);
+  margin-left: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.podcast-episode-header {
+  position: relative;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: var(--regular-box-shadow);
+}
+
+.podcast-episode-header span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.podcast-episode-list {
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: var(--regular-box-shadow);
+}
+
+table {
+  position: relative;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  font-size: 13px;
+  padding: 7px;
+  box-sizing: border-box;
+  text-transform: capitalize;
+}
+
+td {
+
+}
+
+.left-alignment {
+  text-align: left;
+}
+
+.right-alignment {
+  text-align: right;
+}
+
+td:nth-child(1n) {
+  color: var(--blue);
+}
+
+th:nth-child(1n), td:nth-child(1n) {
+  width: 70%;
+}
+
+th:nth-child(2n), td:nth-child(2n) {
+  width: 20%;
+  color: black;
+}
+
+th:nth-child(3n), td:nth-child(3n) {
+  width: 10%;
+  color: black;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(247, 247, 247);
 }

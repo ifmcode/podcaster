@@ -3,6 +3,11 @@ a {
   text-decoration: none;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 .max-two-lines {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -10,4 +15,15 @@ a {
   -webkit-line-clamp: 2;
           line-clamp: 2;
   -webkit-box-orient: vertical;
+}
+
+.main-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 20px 60px 60px 60px;
+  box-sizing: border-box;
+}
+
+hr {
+  opacity: .2;
 }

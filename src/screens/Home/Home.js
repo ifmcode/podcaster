@@ -2,9 +2,9 @@ import "./Home.css"
 import {useCallback, useEffect, useState, useRef} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import moment from "moment/moment";
-import { requestPodcastList } from "../../services/data";
+import { requestPodcastList } from "../../services/podcastService";
 import {updatePodcaster, updateStatus, status} from "../../redux/podcasterSlice";
-import { Link } from "react-router-dom";
+import PodcastGridItem from "../../components/PodcastGridItem/PodcastGridItem";
 
 const Home = () => {
   const dispatch = useDispatch(),
@@ -13,7 +13,7 @@ const Home = () => {
     [filteredPodcasts, setFilteredPodcasts] = useState(podcaster.podcastList || []);
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchPodcastList() {
       const podcastList = await requestPodcastList();
       podcastList && dispatch(updatePodcaster({
         podcastList,
@@ -23,7 +23,7 @@ const Home = () => {
     }
 
     if (podcaster.status === status.ZERO || podcaster.status === status.OUTDATED) {
-      fetchData();
+      fetchPodcastList();
     }
   }, [podcaster.status, dispatch]);
 
@@ -72,13 +72,7 @@ const Home = () => {
       {
         filteredPodcasts && filteredPodcasts.map((podcast) => {
           return (
-            <Link to={"/podcast/:" + podcast.id} className="grid-item" key={podcast.id}>
-              <div className="grid-item-info">
-                <img src={podcast.image} alt="podcast main photo" className="grid-item-image"/>
-                <div className="grid-item-title max-two-lines">{podcast.title}</div>
-                <div className="grid-item-author max-two-lines">Author: {podcast.author}</div>
-              </div>
-            </Link>
+            <PodcastGridItem podcast={podcast} key={podcast.id}/>
           );
         })
       }

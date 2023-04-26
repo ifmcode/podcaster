@@ -1,0 +1,65 @@
+.podcast-card-wrapper {
+  position: relative;
+  width: 30%;
+  box-shadow: var(--regular-box-shadow);
+  padding: 20px 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.podcast-card-image-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 20px;
+}
+
+.podcast-card-image {
+  position: relative;
+  width: 160px;
+  border-radius: 6px;
+}
+
+.podcast-card-title-author {
+  position: relative;
+  border-bottom: 1px solid lightgray;
+}
+
+.podcast-title,
+.podcast-description-header {
+  position: relative;
+  display: block;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.podcast-author {
+  font-weight: 500;
+}
+
+.podcast-author,
+.podcast-description {
+  position: relative;
+  display: block;
+  font-size: 14px;
+  line-height: 14px;
+  font-style: italic;
+}
+
+.podcast-card-title-author,
+.podcast-card-description {
+  padding: 20px 5px;
+  box-sizing: border-box;
+}
+
+.podcast-card-description {
+  padding-bottom: 0;
+}
+
+.podcast-description-header {
+  margin-bottom: 8px;
+}

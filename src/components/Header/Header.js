@@ -8,7 +8,6 @@ const Header = () => {
     IDLE_STATUS = "idle";
 
   useEffect(() => {
-    console.log(navigation.state);
     navigationIndicatorRef.current.className = (navigation.state !== IDLE_STATUS)
       ? "header-indicator visible"
       : "header-indicator";
