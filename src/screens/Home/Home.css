@@ -1,8 +1,43 @@
 .main-wrapper {
   position: relative;
   width: 100%;
-  padding: 60px 60px;
+  padding: 20px 60px 60px 60px;
   box-sizing: border-box;
+}
+
+.filter-section {
+  position: relative;
+  width: 100%;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: row-reverse;
+  box-sizing: border-box;
+}
+
+.results-number {
+  position: relative;
+  padding: 3px 8px;
+  background-color: rgb(42, 119, 192);
+  border-radius: 7px;
+  color: white;
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: bold;
+  margin-right: 7px;
+  align-self: center;
+}
+
+.filter-input {
+  position: relative;
+  height: 22px;
+  width: 216px;
+  border-radius: 3px;
+  border: 1px solid lightgray;
+  padding: 2px 8px;
+}
+
+.filter-input::placeholder {
+  font-style: italic;
 }
 
 .home-grid {
@@ -12,6 +47,7 @@
   grid-template-columns: repeat(4, calc(25% - 15px));
   column-gap: 20px;
   row-gap: 100px;
+  margin-top: 60px;
   grid-auto-rows: min-content;
 }
 
