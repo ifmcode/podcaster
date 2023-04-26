@@ -1,5 +1,60 @@
-.home-title {
-  color: red;
-  font-size: 14px;
+.main-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 60px 60px;
+  box-sizing: border-box;
+}
+
+.home-grid {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, calc(25% - 15px));
+  column-gap: 20px;
+  row-gap: 100px;
+  grid-auto-rows: min-content;
+}
+
+.grid-item {
+  position: relative;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.grid-item:hover {
+  box-shadow: rgba(0, 0, 0, 0.48) 0px 3px 8px;
+}
+
+.grid-item-info {
+  position: relative;
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.grid-item-image {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 6px;
+}
+
+.grid-item-title {
+  position: relative;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  margin-top: 40px;
+  color: black;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.grid-item-author {
+  position: relative;
+  font-size: 13px;
+  color: grey;
 }

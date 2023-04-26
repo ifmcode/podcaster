@@ -22,13 +22,19 @@ export const podcasterSlice = createSlice({
       state.lastUpdate = lastUpdate;
       state.status = status.UPDATED;
     },
+    updateStatus: (state, action) => {
+      state.status = action.payload;
+    },
   },
 });
 
-const { updatePodcaster } = podcasterSlice.actions;
+//TODO: save data in userStorage
+
+const { updatePodcaster, updateStatus } = podcasterSlice.actions;
 
 export {
   updatePodcaster,
+  updateStatus,
   status,
 } 
 export default podcasterSlice.reducer;
