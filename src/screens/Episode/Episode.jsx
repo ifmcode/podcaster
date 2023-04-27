@@ -8,7 +8,7 @@ const Episode = () => {
     audioRef = useRef(null),
     {podcast, episode} = location.state;
 
-  return (
+  return (podcast && episode) ? (
     <section className="main-wrapper episode-main-wrapper">
       <PodcastCard podcastInfo={podcast}/>
       <div className="episode-info-wrapper">
@@ -19,6 +19,8 @@ const Episode = () => {
         </audio>
       </div>
     </section>
+  ) : (
+    <p>The data is not loaded</p>
   );
 }
 

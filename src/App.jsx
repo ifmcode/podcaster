@@ -23,8 +23,4 @@ const App = () => {
   );
 }
 
-//TODO: save data in userStorage
-//TODO: solve cors error
-//TODO: Header component the navigation.state does not notify changed
-
 export default App;
