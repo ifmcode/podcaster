@@ -51,7 +51,7 @@ const Home = () => {
     }
   }
 
-  return (filteredPodcasts.length > 0) ? (
+  return (
     <section className="main-wrapper">
       <div className="filter-section">
         <input
@@ -73,9 +73,7 @@ const Home = () => {
         }
       </div>
     </section>
-  ) : (
-    <p>The data is not loaded</p>
-  );
+  )
 }
 
 export default Home;

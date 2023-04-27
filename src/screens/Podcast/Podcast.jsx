@@ -31,7 +31,6 @@ const Podcast = () => {
       if (isOutdated) {
         dispatch(updatePodcastEpisodes(podcastId));
       } else {
-
         setEpisodeList(podcast.podcastEpisodeList);
       }
     } else {
