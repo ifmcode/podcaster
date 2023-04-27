@@ -1,38 +1,49 @@
 import "./Podcast.css"
 import {Link, useParams} from 'react-router-dom';
-import {useSelector} from 'react-redux';
-import PodcastCard from "../../components/PodcastCard/PodcastCard";
+import {useSelector, useDispatch} from 'react-redux';
 import { useEffect, useState } from "react";
+import PodcastCard from "../../components/PodcastCard/PodcastCard";
 import { requestPodcastEpisodes } from "../../services/podcastService";
+//import {updatePodcaster} from "../../redux/podcasterSlice";
+
 
 const Podcast = () => {
   const {podcastId} = useParams(),
     podcaster = useSelector(state => state.podcaster),
-    [podcast, setPodcast] = useState(null),
-    [episodeList, setEpisodeList] = useState([]); 
+    dispatch = useDispatch(),
+    [currentPodcast, setCurrentPodcast] = useState(null),
+    [episodeList, setEpisodeList] = useState([]);
 
   useEffect(() => {
-    const podcast = podcaster.podcastList.filter((podcast) => podcast.id === podcastId)[0];
-    setPodcast(podcast);
-  }, [podcaster.podcastList, podcastId])
+    if ((currentPodcast === null || currentPodcast === undefined)) {
+      const newPodcast = podcaster.podcastList.filter((podcast) => podcast.id === podcastId)[0];
+      setCurrentPodcast(newPodcast);
+    }
+  }, [podcaster.podcastList, podcastId, currentPodcast])
 
   useEffect(() => {
     async function fetchPodcastData() {
-      const podcastEpidoseList = await requestPodcastEpisodes(podcastId);
-      podcastEpidoseList && setEpisodeList(podcastEpidoseList);
-      
-      /*dispatch(updatePodcaster({
-        podcastList,
-        lastUpdate: moment().valueOf()
-      }));*/
+      const podcastEpisodeList = await requestPodcastEpisodes(podcastId);
+      if (podcastEpisodeList) {
+        // TODO: save in store
+        /*const podcastListCopy = podcaster.podcastList,
+          indexToUpdate = podcastListCopy.findIndex((podcast) => podcast.id === podcastId),
+          podcastUpdated = {
+            ...podcastListCopy[indexToUpdate],
+            episodeList: podcastEpisodeList
+          };
+        podcastListCopy[indexToUpdate] = podcastUpdated;
+        dispatch(updatePodcaster(podcastListCopy));*/
+        setEpisodeList(podcastEpisodeList);
+      }
     }
 
-    fetchPodcastData();
-  }, [podcastId]);
+    (episodeList.length === 0) && fetchPodcastData();
+  }, [podcastId, dispatch, episodeList, podcaster.podcastList]);
 
-  return podcast && (
+  return currentPodcast && (
     <section className="main-wrapper podcast-main-wrapper">
-      <PodcastCard podcastInfo={podcast}/>
+      <PodcastCard podcastInfo={currentPodcast}/>
       <div className="podcast-episodes-wrapper">
         <div className="podcast-episode-header">
           <span>Episodes: {episodeList.length}</span>
@@ -52,7 +63,11 @@ const Podcast = () => {
                 return (
                   <tr key={index}>
                     <td className="left-alignment">
-                      <Link to={"/podcast/" + podcast.id + "/episode/" + episode.id}>{episode.title}</Link>
+                      <Link
+                        to={"/podcast/" + currentPodcast.id + "/episode/" + episode.id}
+                        state= {{ podcast: currentPodcast, episode: episode}}>
+                          {episode.title}
+                      </Link>
                     </td>
                     <td className="left-alignment">{episode.date}</td>
                     <td className="right-alignment">{episode.duration}</td>

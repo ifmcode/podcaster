@@ -18,11 +18,15 @@ async function requestPodcastEpisodes (podcastId) {
   return fetch(`https://itunes.apple.com/lookup?id=${podcastId}&media=podcast&entity=podcastEpisode`)
     .then((res) => res.json())
     .then((data) => {
+      // Remove first result because is the podcast itself
+      data.results.shift();
       return data.results.map((item) => {
         const date = item.releaseDate;
         return {
           id: item.trackId,
           title: item.trackName,
+          description: item.description,
+          episodeUrl: item.episodeUrl,
           date: date.substring(0, date.indexOf("T")),
           duration: millisToMinutesAndSeconds(item.trackTimeMillis),
         }

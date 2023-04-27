@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import moment from "moment/moment";
 
 const status = {
   ZERO: "ZERO",
@@ -17,9 +18,8 @@ export const podcasterSlice = createSlice({
   initialState,
   reducers: {
     updatePodcaster: (state, action) => {
-      const { podcastList, lastUpdate } = action.payload;
-      state.podcastList = podcastList;
-      state.lastUpdate = lastUpdate;
+      state.podcastList = action.payload;
+      state.lastUpdate = moment().valueOf();
       state.status = status.UPDATED;
     },
     updateStatus: (state, action) => {
@@ -27,8 +27,6 @@ export const podcasterSlice = createSlice({
     },
   },
 });
-
-//TODO: save data in userStorage
 
 const { updatePodcaster, updateStatus } = podcasterSlice.actions;
 

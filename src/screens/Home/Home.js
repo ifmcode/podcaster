@@ -15,10 +15,7 @@ const Home = () => {
   useEffect(() => {
     async function fetchPodcastList() {
       const podcastList = await requestPodcastList();
-      podcastList && dispatch(updatePodcaster({
-        podcastList,
-        lastUpdate: moment().valueOf()
-      }));
+      podcastList && dispatch(updatePodcaster(podcastList));
       setFilteredPodcasts(podcastList);
     }
 
