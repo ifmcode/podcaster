@@ -20,7 +20,7 @@ const Episode = () => {
       </div>
     </section>
   ) : (
-    <p>The data is not loaded</p>
+    <p className="message-no-loaded">The data is not loaded yet...</p>
   );
 }
 
