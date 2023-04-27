@@ -23,4 +23,7 @@ const App = () => {
   );
 }
 
+//TODO: solve cors error
+//TODO: Header component the navigation.state does not notify changed
+
 export default App;
